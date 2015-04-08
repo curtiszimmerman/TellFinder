@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Community | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../../">
+					<img src="../../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../../tour/overview/">Tour</a>
+				
+					<a href="../../../docs/userguide/">Docs</a>
+				
+					<a href="../../../community/development/overview/" class="selected">Community</a>
+				
+					<a href="../../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../../community/development/overview/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">Developer Docs</div>
+		</a>
+	
+		<a class="submenu-item" href="../../../community/download/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">Download</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<div class="toc right">
+
+	<div id="toc-header">Contents</div>
+	<ol id="toc-body">	
+	
+		<li><a href="../../../community/development/overview/">Overview</a>
+	
+
+	
+		<li><a href="../../../community/development/data/">TellFinder Data</a>
+	
+			<ul>
+				<li><a href="../../../community/development/data/#source-code">Source Code</a>
+				<li><a href="../../../community/development/data/#databases">Databases</a>
+				<li><a href="../../../community/development/data/#maps">Map Set</a>
+			</ul>
+		</li>
+
+		
+		<li>Manual Installation
+	
+			<ul>
+				<li><a href="../../../community/development/install/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/install/#databases">Database Connection</a>
+				<li><a href="../../../community/development/install/#build">Build</a>
+				<li><a href="../../../community/development/install/#deploy">Deploy</a>
+			</ul>
+		</li>
+
+	
+		<li><a href="../../../community/development/docker/">Docker</a>
+	
+			<ul>
+				<li><a href="../../../community/development/docker/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/docker/#deploy-maps">Map Deployment</a>
+				<li><a href="../../../community/development/docker/#virtual-machine">Virtual Machine</a>
+				<li><a href="../../../community/development/docker/#docker-container">Docker Container</a>
+				<li><a href="../../../community/development/docker/#tellfinder-container">TellFinder Container</a>
+				<li><a href="../../../community/development/docker/#mysql">MySQL Connection</a>
+			</ul>
+		</li>
+
+	</ol>
+</div>
+
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>Manual Installation</h1>
+
+<p>The following instructions describe how to manually build and deploy TellFinder from the project source code. Before you begin, ensure that you have obtained all of the necessary <a href="../data">data</a>.</p>
+
+<h2><a name="prereqs"></a> Prerequisites</h2>
+
+<p>The TellFinder build and deployment processes depend on the following third-party tools. Ensure that each tool is installed and properly configured on your machine:</p>
+
+<ul>
+<li><a href="http://www.oracle.com/technetwork/java/">Java Development Kit (JDK)</a> version 1.7</li>
+<li><a href="http://www.mysql.com/">MySQL</a></li>
+<li><a href="http://ant.apache.org/">Apache Ant</a></li>
+<li><a href="http://tomcat.apache.org/">Apache Tomcat</a> version 1.7</li>
+</ul>
+
+<h2><a name="databases"></a> Configuring MySQL Connection Details</h2>
+
+<p>The first step in building TellFinder is to provide the connection details for the <a href="../data/#databases">databases</a> that contain the ad data. TellFinder is configured to look for your databases using the default MySQL setup:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">database_host = localhost
+database_port = 3306
+database_user = root
+database_password = &lt;password&gt;
+database_name = xdataht
+</code></pre></div>
+<p>If your configuration differs, simply edit any of the affected parameters in the <strong>xdataht.properties</strong> file in the project&#39;s *war* directory:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">database_type = mysql
+database_host = localhost
+database_port = 3306
+database_user = root
+database_password = &lt;password&gt;
+database_ht_schema = ist_db
+database_oculus_schema = tellfinder_db
+</code></pre></div>
+<h2><a name="build"></a> Building the Project</h2>
+
+<p>Once you have configured the TellFinder database connection, you can build the project as a WAR file that can be deployed to your server:</p>
+
+<ol>
+<li>Ensure your JDK_HOME and JAVA_HOME environment variables are set to the correct path (e.g., <em>C:\Program Files\Java\jdk1.7.0_55</em>).</li>
+<li>Edit the <strong>build.properties</strong> file in the root project folder to specify the destination for the WAR file, typically the <em>webapps/</em> folder of your Tomcat installation.</li>
+<li>Use Apache Ant to build the default target <strong>build.xml</strong> file in the root project folder. Note that you can specify the WAR destination at build time using the following command:</li>
+</ol>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">ant -Dbuild.path<span class="o">=</span>&lt;your_webapps_directory&gt;
+</code></pre></div>
+<h2><a name="deploy"></a> Deploying TellFinder</h2>
+
+<p>Deploying the TellFinder web application consists of the following Tomcat configuration procedures:</p>
+
+<ul>
+<li>Allocating Memory</li>
+<li>Configuring Tomcat Users
+
+<ul>
+<li>Enabling MySQL Authentication (Optional)</li>
+</ul></li>
+<li>Deploying the Map Set</li>
+<li>Starting the Server</li>
+</ul>
+
+<h3>Allocating Memory</h3>
+
+<p>Create an environment variable to allocate 6144m memory (or at least 2048m) to the TellFinder web application. You may find it useful to save this parameter to a <strong>setenv.bat</strong> file in your Tomcat server&#39;s <em>bin</em> directory. </p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set </span><span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">"-Xmx6144m"</span>
+</code></pre></div>
+<h3>Configuring Tomcat Users</h3>
+
+<p>Edit the <strong>tomcat_users.xml</strong> file in your Tomcat server&#39;s <em>conf</em> directory to list unique usernames and passwords for each user who will require access to the application:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;role</span> <span class="na">rolename=</span><span class="s">"ocweb"</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;user</span> <span class="na">username=</span><span class="s">"jsmith"</span> <span class="na">password=</span><span class="s">"ocweb"</span> <span class="na">roles=</span><span class="s">"ocweb"</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<h4><a name="mysql-auth"></a> Enabling MySQL Authentication (Optional)</h4>
+
+<p>Alternatively, you can configure MySQL to handle TellFinder user authentication. Note that this configuration setup requires you to add <code>user</code> and <code>user_roles</code> tables to your <code>tellfinder_db</code> table; see <a href="../data/#mysql-auth">TellFinder Data</a> for more information.</p>
+
+<p>Once you have configured your MySQL database:</p>
+
+<ol>
+<li>Ensure the <a href="http://dev.mysql.com/downloads/connector/j/">MySQL driver</a> (<em>mysql-connector-java-5.X.XX.jar</em>) is in the <em>lib/</em> directory of your Tomcat installation.</li>
+<li>Change the security realm by editing the <strong>server.xml</strong> file in your Tomcat server&#39;s <em>conf/</em> directory. Find:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Realm</span> <span class="na">className=</span><span class="s">"org.apache.catalina.realm.UserDatabaseRealm"</span> 
+    <span class="na">resourceName=</span><span class="s">"UserDatabase"</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>And replace it with:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Realm</span> <span class="na">className=</span><span class="s">"org.apache.catalina.realm.JDBCRealm"</span>
+    <span class="na">driverName=</span><span class="s">"com.mysql.jdbc.Driver"</span>
+    <span class="na">connectionURL=</span><span class="s">"${user.jdbc.url}"</span>
+    <span class="na">userTable=</span><span class="s">"users"</span> <span class="na">userNameCol=</span><span class="s">"user_name"</span> <span class="na">userCredCol=</span><span class="s">"user_pass"</span>
+    <span class="na">userRoleTable=</span><span class="s">"user_roles"</span> <span class="na">roleNameCol=</span><span class="s">"role_name"</span><span class="nt">/&gt;</span>
+</code></pre></div></li>
+<li>Run the Tomcat server with an additional define:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">-Duser.jdbc.url<span class="o">=</span><span class="s2">"jdbc:mysql://localhost:3306/tellfinder_db?user=dbuser&amp;password=dbpass"</span>
+</code></pre></div></li>
+<li>Alternatively, set the environment variable <code>JAVA_OPTS</code>, or edit your <strong>setenv</strong> script:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set </span><span class="nv">JAVA_OPTS</span><span class="o">=</span>-Xmx6144m -Duser.jdbc.url<span class="o">=</span><span class="s2">"jdbc:mysql://localhost:3306/tellfinder_db?user=dbuser&amp;password=dbpass"</span>
+</code></pre></div></li>
+</ol>
+
+<h3>Map Deployment</h3>
+
+<p>Unzip the contents of your <a href="../data/#maps">maps</a> file to your Tomcat server&#39;s <em>webapps</em> directory.</p>
+
+<h3>Starting the Server</h3>
+
+<p>Start your Tomcat server using the <strong>startup</strong> script file in the <em>bin</em> directory.</p>
+
+<h2>Using TellFinder</h2>
+
+<p>Once your Tomcat server has been initialized, you can use TellFinder by simply opening a web browser and navigating to <code>http://localhost:8080/tellfinder</code>.</p>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>

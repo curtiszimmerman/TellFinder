@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+{% comment %} Get path and filename containing sidebar content {% endcomment %}
+{% capture includeContext %}{{ page.section | slugify }}-{{ page.subtitle | slugify }}.html{% endcapture %}
+
+<script src="{{ site.baseurl }}/lib/jquery.js"></script>
+<script src="{{ site.baseurl }}/lib/OpenAjaxUnmanagedHub.js"></script>
+<script src="{{ site.baseurl }}/lib/raphael.js"></script>
+<script src="{{ site.baseurl }}/lib/OpenLayers-textures.js"></script>
+<script src="{{ site.baseurl }}/lib/aperture.js"></script>
+
+{% include submenu.html %}
+
+{% include {{includeContext}} %}
+<div class="content-example">
+    {{ content }}
+
+    {% if page.sourceUrl %}
+        <p>Example Code: </p>
+        <code class="example">
+            <pre class="brush: js">{% raw sourceUrl %}
+            </pre>
+        </code>
+
+        <p><a href="{{page.sourceUrl}}">Source: {{page.sourceUrl}}</a></p>
+    {% endif %}
+
+    <p><a href="{{site.rooturl}}/examples">&larr; Examples</a></p>
+    {% include footer.html %}
+</div>
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Community | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../../">
+					<img src="../../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../../tour/overview/">Tour</a>
+				
+					<a href="../../../docs/userguide/">Docs</a>
+				
+					<a href="../../../community/development/overview/" class="selected">Community</a>
+				
+					<a href="../../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../../community/development/overview/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">Developer Docs</div>
+		</a>
+	
+		<a class="submenu-item" href="../../../community/download/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">Download</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<div class="toc right">
+
+	<div id="toc-header">Contents</div>
+	<ol id="toc-body">	
+	
+		<li><a href="../../../community/development/overview/">Overview</a>
+	
+
+		
+		<li>TellFinder Data
+	
+			<ul>
+				<li><a href="../../../community/development/data/#source-code">Source Code</a>
+				<li><a href="../../../community/development/data/#databases">Databases</a>
+				<li><a href="../../../community/development/data/#maps">Map Set</a>
+			</ul>
+		</li>
+
+	
+		<li><a href="../../../community/development/install/">Manual Installation</a>
+	
+			<ul>
+				<li><a href="../../../community/development/install/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/install/#databases">Database Connection</a>
+				<li><a href="../../../community/development/install/#build">Build</a>
+				<li><a href="../../../community/development/install/#deploy">Deploy</a>
+			</ul>
+		</li>
+
+	
+		<li><a href="../../../community/development/docker/">Docker</a>
+	
+			<ul>
+				<li><a href="../../../community/development/docker/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/docker/#deploy-maps">Map Deployment</a>
+				<li><a href="../../../community/development/docker/#virtual-machine">Virtual Machine</a>
+				<li><a href="../../../community/development/docker/#docker-container">Docker Container</a>
+				<li><a href="../../../community/development/docker/#tellfinder-container">TellFinder Container</a>
+				<li><a href="../../../community/development/docker/#mysql">MySQL Connection</a>
+			</ul>
+		</li>
+
+	</ol>
+</div>
+
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>TellFinder Data</h1>
+
+<p>Before you begin installing TellFinder, retrieve the data described in the following sections. The TellFinder source code is freely available for download on <a href="https://github.com/">GitHub</a>. The databases and map set must be obtained from Uncharted.</p>
+
+<h2><a name="source-code"></a> Source Code</h2>
+
+<p>For access to the TellFinder source code repository on GitHub, contact Uncharted. We recommend that you watch the project to receive email notifications each time a new release becomes available.</p>
+
+<h2><a name="databases"></a> Databases</h2>
+
+<p>TellFinder connects to the following MySQL databases via <a href="http://docs.oracle.com/javase/tutorial/jdbc/">JDBC</a>:</p>
+
+<ul>
+<li><strong>ist_db</strong>: Contains ads with some feature extraction. Produced by <a href="http://istresearch.com/">IST Research</a>.</li>
+<li><strong>tellfinder_db</strong>: Contains cleaned and normalized features.</li>
+</ul>
+
+<p>Because of their size, the TellFinder databases are not included with the source code. To receive sample versions of the databases, please <a href="../../../contact/">contact</a> Uncharted. A set of SQL scripts will be provided for you to execute and build the databases.</p>
+
+<h3>Restoring the Databases</h3>
+
+<p>Run each of the SQL scripts provided to you by Uncharted. This will create the <strong>ist_db</strong> and <strong>tellfinder_db</strong> schemas in your database. Note that due to the size of these databases, the operations may cause significant wait times.</p>
+
+<h3><a name="mysql-auth"></a> Using MySQL for Tomcat Authorization (Optional)</h3>
+
+<p>To use MySQL to store TellFinder user authentication data:</p>
+
+<ol>
+<li>Execute the <strong>create_user_tables.sql</strong> script in the <em>deploy/</em> directory of the source code. This will add <code>users</code> and <code>user_roles</code> tables to your <code>tellfinder_db</code> database.</li>
+<li>Hash the passwords of your users using sha-256. To hash a password using Tomcat&#39;s digest utility:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">$TOMCAT_HOME/bin/digest -a sha-256 mypassword
+</code></pre></div>
+<p>This will output the plain-text password followed by the hashed password, which you should capture for each user:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">mypassword:&lt;hashed_password&gt;
+</code></pre></div></li>
+<li>Populate the <code>users</code> table in <strong>tellfinder_db</strong> with your users and their hashed passwords:</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="n">users</span> <span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">user_pass</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s1">'roxy'</span><span class="p">,</span>
+<span class="s1">'&lt;hashed_password&gt;'</span><span class="p">);</span>
+</code></pre></div></li>
+<li>Assign the role <code>ocweb</code> to users in to the <code>user_roles</code> table:</p>
+<div class="highlight"><pre><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="n">user_roles</span> <span class="p">(</span><span class="n">user_name</span><span class="p">,</span> <span class="n">role_name</span><span class="p">)</span> <span class="k">values</span> <span class="p">(</span><span class="s1">'roxy'</span><span class="p">,</span> <span class="s1">'ocweb'</span><span class="p">);</span>
+</code></pre></div></li>
+</ol>
+
+<p>In addition to passing the users and user roles to your MySQL database, you will also need to configure your Tomcat server. See the <a href="../install/#mysql-auth">Manual Installation</a> or <a href="../docker/#mysql-auth">Docker</a> topics for more information.</p>
+
+<h2><a name="maps"></a> Map Set</h2>
+
+<p>As with the databases, the TellFinder map set is not included in the source code due to its size. To receive the map files, please <a href="../../../contact/">contact</a> Uncharted.</p>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{% comment %} Get path and filename containing sidebar content {% endcomment %}
+{% capture includeContext %}{{ page.section | slugify }}-{{ page.subtitle | slugify }}.html{% endcapture %}
+
+{% include submenu.html %}
+<div id="content">
+    {% include {{ includeContext }} %}
+
+    <div class="content-example">
+        {{ content }}
+            {% include footer.html %}
+    </div>
+
+</div>
+

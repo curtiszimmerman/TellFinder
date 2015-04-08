@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="xdataht" default="all" basedir=".">
+
+	<property file="build.properties" />
+
+    <target name="stage" description="Stage Tellfinder source code into a directory for building">
+        <copy todir="stage">
+            <fileset dir="."/>
+        </copy>
+    </target>
+
+    <target name="cleanstage" description="Clean the staging directory">
+        <delete dir="stage" failonerror="false" />
+    </target>
+
+    <target name="optimizeJS" description="Optimize RequireJS main file and edit corresponding HTML page to use minified source">
+
+        <echo message="Creating build file for ${appName} from template"/>
+        <copy file="${baseDirectory}/war/buildtemplate.js" tofile="${baseDirectory}/war/build${appName}.js"/>
+        <replace casesensitive="false"
+                 file="${baseDirectory}/war/build${appName}.js"
+                 token="%1"
+                 value="${appName}"/>
+
+        <replace casesensitive="false"
+                 file="${baseDirectory}/war/build${appName}.js"
+                 token="%2"
+                 value="${appName}_${DSTAMP}_${TSTAMP}"/>
+
+        <echo message="SourceJS=${baseDirectory}/war/scripts/xdataht/${appName}Main.js, HTML=${baseDirectory}/war/${appName}.html, dist=${baseDirectory}/dist/tellfinder-${appName}_${DSTAMP}_${TSTAMP}.js"/>
+        <exec dir="${baseDirectory}/war" executable="r.js">
+            <arg value="-o"/>
+            <arg value="build${appName}.js"/>
+        </exec>
+
+        <replace casesensitive="false"
+                 file="${baseDirectory}/war/${appName}.html"
+                 token="data-main='scripts/xdataht/${appName}Main"
+                 value="data-main='dist/tellfinder-${appName}_${DSTAMP}_${TSTAMP}"/>
+
+        <replace casesensitive="false"
+                 file="${baseDirectory}/war/${appName}.html"
+                 token="data-main=&quot;scripts/xdataht/${appName}Main"
+                 value="data-main=&quot;dist/tellfinder-${appName}_${DSTAMP}_${TSTAMP}"/>
+    </target>
+
+	<target name="javac" description="Compile java source to bytecode">
+		<path id="project.class.path">
+			<fileset dir="${baseDirectory}/lib">
+				<include name="**/*.jar" />
+			</fileset>
+			<fileset dir="${baseDirectory}/war/WEB-INF/lib">
+				<include name="**/*.jar" />
+			</fileset>
+		</path>
+		<mkdir dir="${baseDirectory}/build/classes" />
+		<property name="myclasspath" refid="project.class.path"></property>
+		<echo message="Classpath = ${myclasspath}"></echo>
+		<javac srcdir="${baseDirectory}/src" includes="**" encoding="utf-8" destdir="${baseDirectory}/build/classes" source="1.7" target="1.7" nowarn="true" debug="true" debuglevel="lines,vars,source" includeantruntime="false">
+			<classpath refid="project.class.path" />
+		</javac>
+	</target>
+
+	<target name="jar" depends="javac" description="Create a jar file">
+		<jar destfile="${baseDirectory}/war/WEB-INF/lib/xdataht.jar">
+			<fileset dir="${baseDirectory}/build/classes"></fileset>
+		</jar>
+		<copy file="${baseDirectory}/war/WEB-INF/lib/xdataht.jar" todir="${baseDirectory}/scripts/preprocess"/>
+	</target>
+    
+	
+	<target name="war" depends="jar" description="Create a war file">
+		<delete file="${build.path}/tellfinder.war" failonerror="false" />
+		<delete file="${build.path}/xdataht.war" failonerror="false" />
+		<delete dir="${build.path}/tellfinder" failonerror="false" />
+		<delete dir="${build.path}/xdataht" failonerror="false" />
+		<jar destfile="${build.path}/tellfinder.war">
+			<zipfileset dir="${baseDirectory}/war">
+			</zipfileset>
+		</jar>
+		<delete file="${baseDirectory}/war/WEB-INF/lib/xdataht.jar" failonerror="false" />
+	</target>
+
+	<target name="deploy" depends="war">
+	</target>
+	
+	<target name="clean" description="Cleans this project">
+		<delete dir="${baseDirectory}/build/classes" failonerror="false" />
+	</target>
+
+    <target name="minify" description="Minify each requireJS application">
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="adsearch"/>
+        </antcall>
+        <antcall target="optimizeJS">
+            <param name="appName" value="chart"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="graph"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="imagebin"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="images"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="labor"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="overview"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="status"/>
+        </antcall>
+
+        <antcall target="optimizeJS">
+            <param name="appName" value="subset"/>
+        </antcall>
+    </target>
+	
+	<target name="copy-maps" description="Copy maps into deploy directory that aren't checked in">
+		<get src="http://maven:8080/archiva/repository/internal/software/uncharted/tellfinder/map.tar.gz/1.0.0/map.tar.gz-1.0.0.tar.gz" dest="deploy/map.tar.gz" verbose="on" skipexisting="true" />
+	</target>
+
+	<target name="all">
+        <property name="baseDirectory" value="."/>
+
+		<antcall target="clean" />
+		<antcall target="deploy" />
+		<antcall target="clean" />
+	</target>
+
+    <target name="production">
+        <tstamp/>
+
+        <property name="baseDirectory" value="./stage"/>
+
+        <antcall target="cleanstage"/>
+        <antcall target="stage" />
+
+        <antcall target="clean" />
+        <antcall target="minify"></antcall>
+        <antcall target="deploy" />
+        <antcall target="clean" />
+
+        <antcall target="cleanstage" />
+    </target>
+
+</project>

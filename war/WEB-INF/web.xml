@@ -1,0 +1,91 @@
+<!DOCTYPE web-app PUBLIC
+"-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+
+	<display-name>Memex HT Server</display-name>
+
+	<session-config>
+        <session-timeout>
+            600
+        </session-timeout>
+    </session-config>
+
+	<context-param> 
+		<param-name>shiroConfigLocations</param-name> 
+		<param-value>file:/etc/tellfinder/shiro.ini</param-value> 
+	</context-param> 
+
+	<listener>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>ShiroFilter</filter-name>
+		<filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>ShiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+	</filter-mapping>
+
+	<filter>
+	    <filter-name>ExpiresFilter</filter-name>
+	    <filter-class>org.apache.catalina.filters.ExpiresFilter</filter-class>
+	    <init-param>
+	        <param-name>ExpiresByType text/html</param-name>
+	        <param-value>access plus 0 seconds</param-value>
+	    </init-param>
+	</filter>
+
+	<filter-mapping>
+	    <filter-name>ExpiresFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	    <dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>rest</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>oculus.memex.rest</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Config File Location -->
+	<!-- Provide the path to the config defaults override properties file here to override the default values -->
+	<context-param>
+		<param-name>apertureConfig</param-name>
+		<param-value>res:///xdataht.properties</param-value>
+	</context-param>
+
+	<!-- Servlet config must run on app deployment -->	
+	<listener>
+    	<listener-class>oculus.memex.init.DBInitListener</listener-class>
+	</listener>	
+	
+	<listener>
+  		<listener-class>net.sf.ehcache.constructs.web.ShutdownListener</listener-class>
+	</listener>	
+	
+	<servlet-mapping>
+		<servlet-name>rest</servlet-name>
+		<url-pattern>/rest/*</url-pattern>
+	</servlet-mapping>
+    
+	<welcome-file-list>
+		<welcome-file>overview.html</welcome-file>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+</web-app>

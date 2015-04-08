@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <META http-equiv="Cache-Control" Content="no-cache">
+	<meta http-equiv="Expires" content="0">
+
+    <title>TellFinder Login Page</title>
+
+	<style>
+		.standaloneToolstrip {
+			height: 31px;
+			margin-bottom:23px;
+			padding-left:10px;
+			padding-top:5px;
+			background-repeat: repeat-x;
+			background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAA8CAIAAADDpPyuAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACxJREFUeNpi/P//PwMDA8vz58+BFBMDGOCjWBgZGUnioVJY5YgwbCRTAAEGAN9cBl7Tr+qqAAAAAElFTkSuQmCC);
+			overflow: hidden;
+			white-space:nowrap;
+			font-family: Arial,Verdana,tahoma,serif;
+			color: #454545;
+			font-size: 18px;
+			border: 1px solid #A7ABB4;
+			background-color: #FFFFFF;
+		}
+		
+		.standaloneBody {
+			margin:0px;
+			font-family: Arial,Verdana,tahoma,serif;
+			font-size: 15px;
+		}
+	</style>
+	<script type="text/javascript">
+		// sometimes, when this app is deployed to Amazon, the form POST below returns 200 on success instead of 302 Redirect to overview.html
+		// this JavaScript will detect whether we are authenticated or not, and if so, redirect us to overview.html
+ 		if (window.XMLHttpRequest) {
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+					// we require a resource below.  if it DOESN'T return this page, we are authenticated...
+					// (this page is returned if we are not authenticated)
+					// (we detect if this page is returned by because it contains the following unique string)
+					if(xmlhttp.status == 200 && xmlhttp.responseText.indexOf("ed2b904a-27a5-406a-9134-0fc045a04864") < 0){
+						// ...so go to overview.html
+						window.location.replace("/tellfinder/overview.html");
+					}
+				}
+			}
+			xmlhttp.open("GET", "/tellfinder/overview.html", true);
+			xmlhttp.send();
+		}
+	</script>
+    <script type="text/javascript">
+      function handleKeypress(event) {
+          if(event.keyCode == 13) {
+              document.getElementById('submit-button').click();
+          }
+      }
+    </script>
+  </head>
+  <body class="standaloneBody" onkeyup="handleKeypress(event)">
+	<div class="standaloneToolstrip" >TellFinder Counter Human Trafficking Login</div>
+  	<hr>
+	<form class="form" id="login_form" method="post">
+		User Name:<input class="element" id="element_1" style="WIDTH: 255px" maxlength="200" name="j_username" autofocus/> <br/>
+		Password:<input class="element" id="element_2" style="WIDTH: 255px" type="password" maxlength="200" name="j_password"/>  <br/>
+		<input id="submit-button" type="submit" value="Submit">
+	</form>
+  </body>
+</html>

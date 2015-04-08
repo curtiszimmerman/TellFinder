@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Community | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../../">
+					<img src="../../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../../tour/overview/">Tour</a>
+				
+					<a href="../../../docs/userguide/">Docs</a>
+				
+					<a href="../../../community/development/overview/" class="selected">Community</a>
+				
+					<a href="../../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../../community/development/overview/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">Developer Docs</div>
+		</a>
+	
+		<a class="submenu-item" href="../../../community/download/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">Download</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<div class="toc right">
+
+	<div id="toc-header">Contents</div>
+	<ol id="toc-body">	
+	
+		<li><a href="../../../community/development/overview/">Overview</a>
+	
+
+	
+		<li><a href="../../../community/development/data/">TellFinder Data</a>
+	
+			<ul>
+				<li><a href="../../../community/development/data/#source-code">Source Code</a>
+				<li><a href="../../../community/development/data/#databases">Databases</a>
+				<li><a href="../../../community/development/data/#maps">Map Set</a>
+			</ul>
+		</li>
+
+	
+		<li><a href="../../../community/development/install/">Manual Installation</a>
+	
+			<ul>
+				<li><a href="../../../community/development/install/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/install/#databases">Database Connection</a>
+				<li><a href="../../../community/development/install/#build">Build</a>
+				<li><a href="../../../community/development/install/#deploy">Deploy</a>
+			</ul>
+		</li>
+
+		
+		<li>Docker
+	
+			<ul>
+				<li><a href="../../../community/development/docker/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/docker/#deploy-maps">Map Deployment</a>
+				<li><a href="../../../community/development/docker/#virtual-machine">Virtual Machine</a>
+				<li><a href="../../../community/development/docker/#docker-container">Docker Container</a>
+				<li><a href="../../../community/development/docker/#tellfinder-container">TellFinder Container</a>
+				<li><a href="../../../community/development/docker/#mysql">MySQL Connection</a>
+			</ul>
+		</li>
+
+	</ol>
+</div>
+
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>Docker</h1>
+
+<p><a href="https://www.docker.com/">Docker</a> is an operating system-level virtualization tool that uses the Linux kernel to create multi-container applications that can run on any system. TellFinder supports an optional Docker deployment method, which is described below.</p>
+
+<h2><a name="prereqs"></a> Prerequisites</h2>
+
+<p>The TellFinder build and deployment processes with Docker depend on the following third-party tools. Ensure that each tool is installed and running from the command line. Note that because Docker does not yet support Windows and Mac operating systems, you will need to to create a virtual machine to use Docker on these systems.</p>
+
+<ul>
+<li>For Linux systems:
+
+<ul>
+<li><a href="http://www.docker.com">Docker</a></li>
+<li><a href="http://ant.apache.org/">Apache Ant</a></li>
+</ul></li>
+<li>For Windows and Mac systems:
+
+<ul>
+<li><a href="https://www.vagrantup.com/">Vagrant</a></li>
+<li><a href="https://www.virtualbox.org/">Oracle VM VirtualBox</a></li>
+</ul></li>
+</ul>
+
+<h2><a name="deploy-maps"></a> Deploying the Map Set</h2>
+
+<p>Copy the <a href="../data/#maps">maps</a> file you received into the <em>deploy/</em> directory of the TellFinder source code.</p>
+
+<h2><a name="virtual-machine"></a> Creating a VM to Run Docker on Windows/Mac</h2>
+
+<p>Windows and Mac do not currently support Docker, which relies on a certain Linux kernel. To work around this, you can create a virtual machine (VM) that does support Docker:</p>
+
+<ol>
+<li>To bring up the VM, run the following command in the project&#39;s <em>deploy/</em> directory. Note that the first time you run this command, you must wait while it downloads and prepares images:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">vagrant up
+</code></pre></div></li>
+<li>Log in to the VM:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">vagrant ssh
+</code></pre></div>
+<p>Note that you may need to install an SSH client to perform this step. <a href="http://git-scm.com/">Git</a> includes an SSH client that you can use on the command line. If you are using Git, make sure your PATH environment variable is correctly configured:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">set PATH=%PATH%;C:\Program Files (x86)\Git\bin
+</code></pre></div></li>
+<li>Once you are logged in to the VM, navigate to the TellFinder folder:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">cd /tellfinder
+</code></pre></div></li>
+</ol>
+
+<p>Alternatively, you can use the VirtualBox user interface, as Vagrant is just a scripting wrapper around standard virtualization software.</p>
+
+<h2><a name="docker-container"></a> Building the Docker Container</h2>
+
+<p>Once your VM is running, you can build the TellFinder WAR and the Docker container in which to deploy it.</p>
+
+<ol>
+<li>Build the WAR:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">ant -Dbuild.path=deploy
+</code></pre></div></li>
+<li>Build the Docker container:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker build -t="[docker_account]/[docker_repository]:[tagname]" .
+</code></pre></div>
+<p>Where:</p>
+
+<ul>
+<li><code>[tagname]</code> is a useful tag such as the current date (e.g., <em>20141215</em>)</li>
+<li><code>[docker_account]</code> is the name of your account or organization on Docker</li>
+<li><code>[docker_repository]</code> is the name of your Docker repository</li>
+</ul></li>
+</ol>
+
+<p>Repeat these steps each time the WAR changes. Because interim stages are cached, <code>docker build</code> will run faster after the first time you execute it.</p>
+
+<h2><a name="tellfinder-container"></a> Running the TellFinder Container as a Daemon</h2>
+
+<p>To run TellFinder as a daemon, execute the following Docker command, replacing any variables in [brackets] with your <a href="../data/#databases">MySQL database</a> connection details:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker run -p 8080:8080 -d --name tellfinder \
+    -e DATABASE_HOST=[dbhost] \
+    -e DATABASE_PORT=3306 \
+    -e DATABASE_USER=[dbuser] \
+    -e DATABASE_PASSWORD=[dbpassword] \
+    -e DATABASE_HT_SCHEMA=ist_db \
+    -e DATABASE_OCULUS_SCHEMA=tellfinder_db \
+    -e ELASTICSEARCH_URL=https://els.istresearch.com:9200/ist_db/ad/_search \
+    [docker_account]/[docker_repository]:[tagname]
+</code></pre></div>
+<p>NOTE: Make sure that the MySQL database user has DBA access to the host that you specify.</p>
+
+<h2>Using TellFinder</h2>
+
+<p>Once your Tomcat server has been initialized, you can use TellFinder by simply opening a web browser and navigating to <code>http://localhost:8080/tellfinder</code>.</p>
+
+<h2>Managing Your Docker Container</h2>
+
+<p>To check the console of a running container:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker logs tellfinder
+</code></pre></div>
+<p>To stop the running container:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker stop tellfinder
+</code></pre></div>
+<p>Because the container is named, you must remove it from your local repository before starting a new one:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker rm tellfinder
+</code></pre></div>
+<h2><a name="mysql"></a> Editing the MySQL Connection</h2>
+
+<p>To get a shell inside the container:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker run -it [docker_account]/[docker_repository]:[tagname] /bin/bash
+</code></pre></div>
+<p>Edit the <strong>xdataht.properties</strong> file in the <em>conf</em> directory, and then exit the container and commit the changes:</p>
+<div class="highlight"><pre><code class="language-" data-lang="">docker commit &lt;container_id&gt;  [docker_account]/[docker_repository]:[tagname]
+</code></pre></div>
+<h3><a name="mysql-auth"></a> Enabling MySQL Authentication (Optional)</h3>
+
+<p>You can configure MySQL to handle TellFinder user authentication. Note that this configuration setup requires you to add <code>user</code> and <code>user_roles</code> tables to your <code>tellfinder_db</code> table; see <a href="../data/#mysql-auth">TellFinder Data</a> for more information.</p>
+
+<p>Once you have configured your MySQL database:</p>
+
+<ol>
+<li>Ensure the <a href="http://dev.mysql.com/downloads/connector/j/">MySQL driver</a> (<em>mysql-connector-java-5.X.XX.jar</em>) is in the <em>lib/</em> directory of your Tomcat installation.</li>
+<li>Change the security realm by editing the <strong>server.xml</strong> file in your Tomcat server&#39;s <em>conf/</em> directory. Find:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Realm</span> <span class="na">className=</span><span class="s">"org.apache.catalina.realm.UserDatabaseRealm"</span> 
+    <span class="na">resourceName=</span><span class="s">"UserDatabase"</span><span class="nt">/&gt;</span>
+</code></pre></div>
+<p>And replace it with:</p>
+<div class="highlight"><pre><code class="language-xml" data-lang="xml"><span class="nt">&lt;Realm</span> <span class="na">className=</span><span class="s">"org.apache.catalina.realm.JDBCRealm"</span>
+    <span class="na">driverName=</span><span class="s">"com.mysql.jdbc.Driver"</span>
+    <span class="na">connectionURL=</span><span class="s">"${user.jdbc.url}"</span>
+    <span class="na">userTable=</span><span class="s">"users"</span> <span class="na">userNameCol=</span><span class="s">"user_name"</span> <span class="na">userCredCol=</span><span class="s">"user_pass"</span>
+    <span class="na">userRoleTable=</span><span class="s">"user_roles"</span> <span class="na">roleNameCol=</span><span class="s">"role_name"</span><span class="nt">/&gt;</span>
+</code></pre></div></li>
+<li>Run the Tomcat server with an additional define:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash">-Duser.jdbc.url<span class="o">=</span><span class="s2">"jdbc:mysql://localhost:3306/tellfinder_db?user=dbuser&amp;password=dbpass"</span>
+</code></pre></div></li>
+<li>Alternatively, set the environment variable <code>JAVA_OPTS</code>, or edit your <strong>setenv</strong> script:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">set </span><span class="nv">JAVA_OPTS</span><span class="o">=</span>-Xmx6144m -Duser.jdbc.url<span class="o">=</span><span class="s2">"jdbc:mysql://localhost:3306/tellfinder_db?user=dbuser&amp;password=dbpass"</span>
+</code></pre></div></li>
+</ol>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>

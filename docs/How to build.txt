@@ -1,0 +1,26 @@
+
+OpenAds is an Eclipse project.
+  The /src directory contains all of the server-side Java code to be compiled into xdataht.jar
+  The /war directory contains all of the web application setup including client-side html and javascript
+  The build.xml script is an ant build script that will build a .war file and deploy to a location specified in build.properties
+
+OpenAds connects to a MySQL database via jdbc.
+  The memex_ht database schema contains the ads with some feature extraction and is produced by IST.
+  The memex_oculus database schema contains cleaned and normalized features
+  
+Getting started:
+  Download apache tomcat (1.6 and 1.7 work) and unpack into <tomcat_dir>
+  Create <tomcat_dir>/conf/setenv.bat with: set JAVA_OPTS="-Xmx6144m" (or at least 2048m)
+  Edit <tomcat_dir>/conf/tomcat_users.xml to add something like:
+    <role rolename="ocweb"/>
+    <user username="roxy" password="ocweb" roles="ocweb"/>
+  Put maps (or maps.zip) in <tomcat_dir>/webapps
+  Edit build.properties to point to <tomcat_dir>/webapps
+  Run build.xml with ant
+  Download MySQL
+  Restore memex_ht and memex_oculus databases in MySQL (optionally memex_cmu and memex_hti)
+  Start tomcat (startup.bat)
+  Open a browser at http://localhost:8080/openads
+  
+  
+  

@@ -1,0 +1,115 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="theme/custom-theme/jquery-ui-1.10.3.custom.css"/>
+    <link rel="stylesheet" type="text/css" href="theme/xdataht.css"/>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/lib/jquery-ui-1.10.3.custom.min.js"></script>
+    <style>
+        .container {
+            border: 1px solid #d3d3d3;
+            margin: 10px 10px 10px 0;
+            padding: 5px;
+        }
+
+        .container p {
+            margin: 2px 0;
+        }
+
+        .containerTitle {
+            font-weight : bold;
+            margin : 5px 0;
+        }
+
+        .concept {
+            cursor : pointer;
+        }
+
+        .concept:hover {
+            background-color: #d3d3d3;
+        }
+
+        .selected {
+            font-weight: bold;
+        }
+
+        .addRemCtrl {
+            cursor:         default;
+            font-family:    Arial, Helvetica;
+            font-size :     16px;
+            font-weight:    bold;
+            margin:         0 5px;
+        }
+
+        .errorMsg {
+            margin: 10px 0;
+            color: #bb0000;
+        }
+
+        #progressContainer {
+            display:                -ms-flexbox;
+            display:                -webkit-flex;
+            display :               flex;
+            -ms-flex-align :        center;
+            -webkit-align-items :   center;
+            align-items:            center;
+            visibility:             hidden;
+        }
+
+        .ui-progressbar {
+            height: 25px;
+        }
+    </style>
+
+    <script data-main="scripts/xdataht/classifierMain" src="scripts/require.js"></script>
+</head>
+
+<body>
+<div>
+    <div>
+        <img src="img/TellFinder_black.png" style="vertical-align: middle; height: 24px;">
+        <span style="font-size: 18px; font-weight: bold; margin-left: 25px;">Advertisement Classifiers</span>
+    </div>
+    <div style="margin-top: 15px;">
+        <div style="float: left; width: 25%;">
+            <p class="containerTitle">Concepts</p>
+            <div class="container">
+                <div id="conceptContainer"></div>
+                <input id="newConceptField" type="text"><span id="addConceptCtrl" class="addRemCtrl" title="Add concept">+</span>
+            </div>
+        </div>
+        <div style="float: left; width: 25%;">
+            <p class="containerTitle">Keywords</p>
+            <div class="container">
+                <div id="keywordContainer"></div>
+                <input id="newKeywordField" type="text"><span id="addKeywordCtrl" class="addRemCtrl" title="Add keyword">+</span>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both"></div>
+</div>
+<div>
+    <button id="applyChangesCtrl">Apply Changes</button>
+    <button id="discardChangesCtrl">Discard Changes</button>
+    <button id="reclassifyCtrl">Extract Concepts</button>
+</div>
+
+<div style="font-size: smaller; width : 50%; margin-top: 30px">
+    <p>
+        <b>Apply Changes</b> updates the keywords associated with the concepts in the database.
+        Concept extraction using the updates will take place on the next scheduled analysis run.
+    </p>
+    <p>
+        Concept extraction can be initiated immediately by clicking the <b>Extract Concepts</b> control.
+        This can be a lengthy process, however, so use with caution.
+    </p>
+</div>
+
+<div id="progressContainer" style="margin-top: 20px;">
+    <div style="">Extracting Concepts : </div>
+    <div id="progressbar" style="width: 30%;margin-left:10px;"></div>
+</div>
+
+<div class="errorMsg"><span id="errorMsg"></span></div>
+
+</body>
+</html>

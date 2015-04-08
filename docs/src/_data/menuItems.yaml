@@ -1,0 +1,33 @@
+main:
+  - label: Tour
+    path: tour/overview/
+
+  - label: Docs
+    path: docs/userguide/
+
+  - label: Community
+    path: community/development/overview/
+
+  - label: Contact
+    path: contact/
+
+docs:
+  - label: User Guide
+    path: docs/userguide/
+
+  - label: About
+    path: docs/about/
+
+community:
+  - label: Developer Docs
+    path: community/development/overview/
+
+  - label: Download
+    path: community/download/
+
+tour:
+  - label: Overview
+    path: tour/overview/
+
+  - label: System Description
+    path: tour/components/

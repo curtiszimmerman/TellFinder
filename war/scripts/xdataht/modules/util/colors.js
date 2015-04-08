@@ -1,0 +1,160 @@
+/**
+ * Copyright (c) 2013-2015 Uncharted Software Inc.
+ * http://uncharted.software/
+ *
+ * Released under the MIT License.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+ * of the Software, and to permit persons to whom the Software is furnished to do
+ * so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+define([], function() {
+    var GLOBAL_ATTRIBUTE_HOVER = '#77F',
+		GLOBAL_BARCHART = ['#FEABB9','#91278F','#89DBEC','#00909E','#D87DFC','#D87D40','#ABFED1','#8B9127','#FCBC7D','#D87DFC'],
+		GLOBAL_BORDER = '#EEE',
+		GLOBAL_HIGHLIGHT = '#AFA',
+		GLOBAL_HOVER = '#AAF',
+		GLOBAL_LABEL = '#076B88',
+		GLOBAL_NOTIFIER = '#555',
+		GLOBAL_OVERLAY_BORDER = '#BBB',
+		GLOBAL_RESIZE_BAR = '#EEE',
+		GLOBAL_SELECTED_HOVER = '#00D100',
+		GLOBAL_TITLE_BAR = '#DEDEDE',
+		GLOBAL_TOTAL = '#FEABB9';
+	return {
+		AGGREGATEMAP_TOTAL: GLOBAL_TOTAL,
+		AGGREGATETIME_DEFAULT_LINE: '#222',
+		AGGREGATETIME_LOCAL: '#0A0',
+		AGGREGATETIME_NEW_TO_ADS: '#A00',
+		AGGREGATETIME_NEW_TO_TOWN: '#A0A',
+		APPWIDGET_RESIZE_BAR: GLOBAL_RESIZE_BAR,
+		ARROWS: 'rgba(255, 165, 0, 0.7)',//'#ffa500',
+		ARROWS_SELECTED : 'rgba(255, 165, 0, 0.7)',
+		ARROWS_UNSELECTED : 'rgba(255, 165, 0, 0.2)',
+        BACKLINK : 'rgba(128,128,128,0.4)',
+        BACKLINK_SELECTED: 'rgba(128,128,128,0.7)',
+        BACKLINK_UNSELECTED: 'rgba(128,128,128,0.2)',
+		ARROWS_FADE: '#ffc04d',
+		BARCHART_COLORS: GLOBAL_BARCHART,
+		BARCHART_MISSING_DATA: '#D4D4D4',
+		BORDER_DARK: '#DEDEDE',
+		CASE_BORDER: GLOBAL_BORDER,
+		CASE_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		CASE_HOVER: GLOBAL_HOVER,
+		CASE_NOTIFIER: GLOBAL_NOTIFIER,
+		CASE_PRIVATE: '#FAA',
+		CASE_SELECTED_HOVER: GLOBAL_SELECTED_HOVER,
+		CIRCLE_DECREASE: '#F22',
+		CIRCLE_DEMOGRAPHIC: '#0F0',
+		CIRCLE_HOVER: '#F08',
+		CIRCLE_INCREASE: '#2F2',
+		CIRCLE_SELECTED: '#80F',
+		CIRCLE_TOTAL: GLOBAL_TOTAL,
+//    	CIRCLE_TOTAL:'r(.5,.9)hsb(.9, 1, .75)-hsb(.9, .5, .25)',
+		CIRCLE_VISITED: '#609',
+		CLUSTER_ARRAY: GLOBAL_BARCHART,
+		CLUSTER_ARRAY_NONE: '#FFF',
+		CLUSTER_BORDER: '#808080',
+		CLUSTER_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		CLUSTER_HOVER: GLOBAL_HOVER,
+		CLUSTER_LABEL: GLOBAL_LABEL,
+		CLUSTER_RESIZE_BAR: GLOBAL_RESIZE_BAR,
+		CLUSTER_SELECTED_HOVER: GLOBAL_SELECTED_HOVER,
+		CLUSTER_TITLE_BAR: GLOBAL_TITLE_BAR,
+        EXPLORER_HOVER : GLOBAL_HOVER,
+        EXPLORER_HIGHLIGHT : GLOBAL_HIGHLIGHT,
+		GRAPH_DOT_STROKE: '#222',
+		GRAPH_RING_1: '#FFE3BB',
+		GRAPH_RING_2: '#FFECD1',
+		GRAPH_RING_3: '#FFF6E8',
+		GRAPH_RING_4: '#FFF',
+		IMAGES_ATTRIBUTE_HOVER: GLOBAL_ATTRIBUTE_HOVER,
+		IMAGES_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		IMAGES_OVERLAY_BORDER: GLOBAL_OVERLAY_BORDER,
+		LINK_PHONE: '#00909E',
+		LINK_EMAIL: '#E48500',
+		LINK_WEBSITE: '#D797DD',
+		LINK_IMAGE: '#DB91D6',
+		LINK_DEFAULT: '#00909E',
+		LINK_SELECTED: GLOBAL_HIGHLIGHT,
+		MAP_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		MAP_HOVER: GLOBAL_HOVER,
+		MAP_SELECTED_HOVER: GLOBAL_SELECTED_HOVER,
+		MAP_TOTAL: GLOBAL_TOTAL,
+		MENU_HOVER: GLOBAL_HOVER,
+		MOVEMENT_CITY_LABEL_DEFAULT: '#F6F6F6',
+		MOVEMENT_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		MOVEMENT_HOVER: GLOBAL_HOVER,
+		MOVEMENT_SELECTED_HOVER: GLOBAL_SELECTED_HOVER,
+		MOVEMENT_TICK_DEFAULT: '#808080',
+		MOVEMENT_TIMELINE_BACKGROUND: '#FFF',
+		OVERVIEW_BORDER: GLOBAL_BORDER,
+		OVERVIEW_TIMELINE: '#FFF',
+		OVERVIEW_HOVER: GLOBAL_HOVER,
+		OVERVIEW_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		OVERVIEW_TIMELINE_BORDER: '#86817D',
+		SIDEPANEL_LABEL: GLOBAL_LABEL,
+		STATUS_HEALTH_FAIR: '#E6E600',
+		STATUS_HEALTH_GOOD: '#00B400',
+		STATUS_HEALTH_POOR: '#B30000',
+		STATUS_HOVER: GLOBAL_HOVER,
+		STATUS_LABEL_DEFAULT: '#F3F3F4',
+		STATUS_LINE_DEFAULT: '#F0F',
+		STATUS_NOTIFIER: GLOBAL_NOTIFIER,
+		STATUS_SHADOW: '#888',
+		STATUS_SOURCES_ARRAY: ['#000000', '#4B0082', '#7B68EE', '#8A2BE2', '#4C4097', '#6B8E23', '#BA55D3', '#7e5e59', '#974C40', '#0053A4', '#20B2AA', '#DC143C', '#6495ED', '#EE82EE', '#C71585', '#F08080', '#7E5966', '#F4A460', '#FF4500', '#59797E', '#006400', '#667e59', '#FF8C00', '#59667E', '#71597e', '#4169E1', '#800000', '#A9A9A9', '#FFD700'],
+		STATUS_TIMELINE_BACKGROUND: '#FFF',
+		STATUS_TIMELINE_BORDER: '#86817D',
+		SUMMARY_HOVER: GLOBAL_HOVER,
+		SUMMARY_NOTIFIER: GLOBAL_NOTIFIER,
+		TABLE_ATTRIBUTE_HOVER: GLOBAL_ATTRIBUTE_HOVER,
+		TABLE_BORDER: GLOBAL_BORDER,
+		TABLE_BLURRED: '#FAA',
+		TABLE_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+		TABLE_HOVER: GLOBAL_HOVER,
+		TABLE_LABEL: GLOBAL_LABEL,
+		TABLE_OVERLAY_BORDER: GLOBAL_OVERLAY_BORDER,
+		TABLE_SELECTED_HOVER: GLOBAL_SELECTED_HOVER,
+		TABLE_TITLE_BAR: GLOBAL_TITLE_BAR,
+        WORD_CLOUD_HIGHLIGHT: GLOBAL_HIGHLIGHT,
+
+		getBarchartColor: function(index) {
+            var color = new aperture.Color(GLOBAL_BARCHART[index % GLOBAL_BARCHART.length]);
+            // TODO: This is just a short term hack to modify our limited palette
+            if (index+1 > GLOBAL_BARCHART.length) {
+                color = color.hue(color.hue()-20*(index+1-GLOBAL_BARCHART.length));
+            }
+			return color;
+		},
+
+
+        hexToRGBA: function(hex,alpha) {
+            var hexStr = hex.replace('#','');
+            var R = 0, G = 0, B = 0;
+            if (hexStr.length === 3) {
+                R = parseInt(hexStr.charAt(0),16) * 16;
+                G = parseInt(hexStr.charAt(1),16) * 16;
+                B = parseInt(hexStr.charAt(2),16) * 16;
+            } else if (hexStr.length === 6) {
+                R = parseInt(hexStr.charAt(0)) * 16 + parseInt(hexStr.charAt(1),16);
+                G = parseInt(hexStr.charAt(2)) * 16 + parseInt(hexStr.charAt(3),16);
+                B = parseInt(hexStr.charAt(4)) * 16 + parseInt(hexStr.charAt(5),16);
+            }
+            return 'rgba(' + R + ',' + G + ',' + B + ',' + alpha + ')';
+        }
+	}
+});

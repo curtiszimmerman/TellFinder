@@ -1,0 +1,54 @@
+<div class="toc right">
+
+	<div id="toc-header">Contents</div>
+	<ol id="toc-body">	
+	{% if page.chapter == 'Overview' %}
+		<li>Overview
+	{% else %}
+		<li><a href="../../../community/development/overview/">Overview</a>
+	{% endif %}
+
+	{% if page.chapter == 'Data' %}	
+		<li>TellFinder Data
+	{% else %}
+		<li><a href="../../../community/development/data/">TellFinder Data</a>
+	{% endif %}
+			<ul>
+				<li><a href="../../../community/development/data/#source-code">Source Code</a>
+				<li><a href="../../../community/development/data/#databases">Databases</a>
+				<li><a href="../../../community/development/data/#maps">Map Set</a>
+			</ul>
+		</li>
+
+	{% if page.chapter == 'Manual Installation' %}	
+		<li>Manual Installation
+	{% else %}
+		<li><a href="../../../community/development/install/">Manual Installation</a>
+	{% endif %}
+			<ul>
+				<li><a href="../../../community/development/install/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/install/#databases">Database Connection</a>
+				<li><a href="../../../community/development/install/#build">Build</a>
+				<li><a href="../../../community/development/install/#deploy">Deploy</a>
+			</ul>
+		</li>
+
+	{% if page.chapter == 'Docker' %}	
+		<li>Docker
+	{% else %}
+		<li><a href="../../../community/development/docker/">Docker</a>
+	{% endif %}
+			<ul>
+				<li><a href="../../../community/development/docker/#prereqs">Prerequisites</a>
+				<li><a href="../../../community/development/docker/#deploy-maps">Map Deployment</a>
+				<li><a href="../../../community/development/docker/#virtual-machine">Virtual Machine</a>
+				<li><a href="../../../community/development/docker/#docker-container">Docker Container</a>
+				<li><a href="../../../community/development/docker/#tellfinder-container">TellFinder Container</a>
+				<li><a href="../../../community/development/docker/#mysql">MySQL Connection</a>
+			</ul>
+		</li>
+
+	</ol>
+</div>
+
+{% include footer.html %}

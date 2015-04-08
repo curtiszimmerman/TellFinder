@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Tour | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../">
+					<img src="../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../tour/overview/" class="selected">Tour</a>
+				
+					<a href="../../docs/userguide/">Docs</a>
+				
+					<a href="../../community/development/overview/">Community</a>
+				
+					<a href="../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../tour/overview/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">Overview</div>
+		</a>
+	
+		<a class="submenu-item" href="../../tour/components/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">System Description</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<img src="../../img/screenshots/regional-context.png" class="home-image" alt="Regional Context" />
+Regional context of scraped ads
+<img src="../../img/screenshots/temporal-context.png" class="home-image" alt="Temporal Context" />
+Temporal context of scraped ads
+<img src="../../img/screenshots/movement.png" class="home-image" alt="Movement" />
+Entity movements across multiple locations over time
+<img src="../../img/screenshots/word-cloud.png" class="home-image" alt="Word Cloud" />
+Commonly used terms in an ad group
+<img src="../../img/screenshots/case-builder.png" class="home-image" alt="Case Builder" />
+Cases of ad groups saved for future reference
+
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>System Description</h1>
+
+<p>The TellFinder web app is made up of the following components that allow users to understand the behaviour of entities and organizations behind publicly available Internet adult services advertisements.</p>
+
+<h2>Regional Context</h2>
+
+<p>The TellFinder overview screen illustrates the volume of scraped advertisements on a map with familiar, web-based navigation controls. Users can quickly pan and zoom to focus on areas of interest or discover other areas with high activity. </p>
+
+<p>Radial indicators appear over each city or region referenced in scraped ads. Larger indicators denote greater ad history. Users can also overlay radial indicators that denote the total or percent change in ads over a configurable period of time.</p>
+
+<p>Users can drill down to explore activity in specific regions to track cross-regional or city activity, ethnic breakdowns and activity summaries.</p>
+
+<h2>Archival Search</h2>
+
+<p>Adult service advertisements are often deleted from the Internet shortly after being posted. TellFinder leverages an extensive database of archived ads that are regularly scraped from adult services websites. This allows users to track long-term behaviours of entities and organizations using data no longer readily accessible from web-based search engines. </p>
+
+<p>When viewing a regional summary of ads or searching for a specific tip, users can quickly adjust the timeframe over which to view ads. This enables users to narrow their focus to specific dates pertinent to a case, browse through only the latest postings or perform an exhaustive search through the entire archives.</p>
+
+<h2>Aggregation and Characterization</h2>
+
+<p>After drilling down into a region or searching for a tip, users are presented with a table of matching ad groups. Each entry represents an individual or organization that has been detected and characterized from identifying attributes contained within thousands of postings in the extensive advertisement archive.</p>
+
+<p>These compact, insightful visual representations are codified to provide quick summaries of behaviour. Groups of ads are characterized by the distributions of various attributes, including:</p>
+
+<table width="100%">
+    <tr>
+        <td width="33%" style="vertical-align: top">
+            <ul>
+                <li>Phone numbers</li>
+                <li>Email addresses</li>
+                <li>Websites</li>
+                <li>Names</li>
+            </ul>
+        </td>
+        <td width="33%" style="vertical-align: top">
+            <ul>
+                <li>Locations</li>
+                <li>Source</li>
+                <li>Ethnicity</li>
+                <li>Risky behavior
+            </ul>
+        </td>
+        <td width="33%" style="vertical-align: top">
+            <ul>
+                <li>Movements</li>
+                <li>Underage activity</li>
+            </ul>
+        </td>
+    </tr>
+</table>
+
+<h2>Entity Details</h2>
+
+<p>Once an entity or organization of interest has been identified, users can drill down further to review the details of the associated ads. Each Entity Details page contains the following components to help users determine activity patterns and discover affiliations and related advertising activities:</p>
+
+<ul>
+<li><strong>Entity Resolution</strong>: Displays the entity&#39;s connection to other entities through shared attributes (websites, phone numbers, email addresses)</li>
+<li><strong>Summary</strong>: Lists entity&#39;s main identifying attributes (email addresses, phone numbers, websites) and counts the number of ads that match them</li>
+<li><strong>Movement</strong>: Represents the post time of ads on multiple region-specific timelines to illustrate movement across geographic locations</li>
+<li><strong>Map</strong>: Shows a focused geographic map containing only ads related to the selected entity</li>
+<li><strong>Word Cloud</strong>: Lists the most common words from the associated ads, where size indicates frequency of use</li>
+<li><strong>Attributes</strong>: Density strip plots summarizing key demographic information from the associated ads</li>
+<li><strong>Images</strong>: Summarizes the number of images shared across the associated ads</li>
+</ul>
+
+<p>In addition to reviewing summaries of the grouped advertisements that belong to an entity, users can access a complete list of all the ads in the group. Links are also available to view the original posting or an archived summary.</p>
+
+<h2>Case Builder</h2>
+
+<p>Users can note related information of interest, such as phone numbers and websites in case files to persist analytic results. Case files can be saved or exported into CSV format for later analysis or import into other tools.</p>
+
+<div class="git">
+    <h2>Interested in Learning More?</h2>
+
+    <ul>
+        <li><a href="../../docs/development/overview/">Community</a>: Learn how to download, install, and implement custom TellFinder deployments.</li>
+        <li><a href="../../docs/userguide/">Docs</a>: Learn how to download and use the TellFinder source code to install and implement your own custom deployment.</li>
+        <li><a href="../../contact/">Contact</a>: Contact Uncharted for more information on TellFinder.</li>
+    </ul>
+</div>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>

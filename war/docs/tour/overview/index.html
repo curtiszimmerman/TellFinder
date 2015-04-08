@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Tour | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../">
+					<img src="../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../tour/overview/" class="selected">Tour</a>
+				
+					<a href="../../docs/userguide/">Docs</a>
+				
+					<a href="../../community/development/overview/">Community</a>
+				
+					<a href="../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../tour/overview/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">Overview</div>
+		</a>
+	
+		<a class="submenu-item" href="../../tour/components/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">System Description</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<img src="../../img/screenshots/ad-groups.png" class="home-image" alt="Ad Groups" />
+Automatically clustered ad groups
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>Overview</h1>
+
+<p>TellFinder simplifies the process of investigating human trafficking cases by automatically characterizing and organizing publicly available Internet escort advertisements. This allows users to quickly locate or discover potentially illicit activity by the entities and organizations that post the ads.</p>
+
+<h2>Ad Scraping and Feature Extraction</h2>
+
+<p>TellFinder is powered by an extensive database of ads scraped from websites in the adult services domain. Advertisements are scraped on a daily basis. </p>
+
+<p>Natural language processing extracts key identifying attributes from the ads, which are then stored in a SQL database. Additional extraction and cleaning captures obfuscated attributes (e.g., a phone number written as 508 5five5 38four1) and normalizes the extracted features.</p>
+
+<h2>Ad Grouping</h2>
+
+<p>Using the scraped and cleaned attributes in the TellFinder databases, sophisticated clustering algorithms group ads that repeat the same identifying attributes: phone numbers, email addresses and websites. Each clustered ad group then represents an entity that exhibits the common features in the related postings.</p>
+
+<p>Each ad belongs to one ad group, but because entities and organizations can share resources, the same identifying attributes can appear in multiple ad groups. TellFinder&#39;s entity resolution visualizations use these shared attributes to illustrate the connections between entities and organizations.</p>
+
+<p>For example, an ad may reference a particular phone number <em>(123) 555-4567</em> and an email address <code>org@example.com</code>. In TellFinder, this ad might be placed in an ad group that represents an entity who uses the phone number. When users view the entity, they will see its connection to other entities or organizations that reference the same email address.</p>
+
+<h2>User Workflow</h2>
+
+<p>TellFinder supports multiple investigative techniques:</p>
+
+<ul>
+<li><strong>Discovery</strong>: Select a region and a timeframe to browse through all adult service ad activity and find previously unknown entities and organizations connected to human trafficking.</li>
+<li><strong>Search</strong>: Search through the entire ad archive for a tip (a name, phone number or email address) to find case-related entities and organizations, saving hours of manual web searches.</li>
+</ul>
+
+<h2>Next</h2>
+
+<p>Review the <a href="../components/">System Description</a> for more information on the individual components that make up TellFinder workflow.</p>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>

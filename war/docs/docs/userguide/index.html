@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="version" content="1.5">
+		<meta name="creation_date" content="2015-02-27 09:13:59 -0500">
+		
+		<title>Docs | TellFinder</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/all.css">
+		<link rel="stylesheet" type="text/css" href="../../css/syntax.css">
+		
+		<link rel="SHORTCUT ICON" href="../../img/resources/tellfinder.ico"/>
+		
+		<script src="../../lib/jquery.js"></script>
+
+		
+	</head>
+	<body>
+		<div id="header"></div>
+		<div id="content-strip">
+			<div id="header-logo">
+				<a href="../../">
+					<img src="../../img/resources/tellfinder.png" alt="TellFinder logo"/>
+				</a>
+			</div>
+			<div id="header-menu">
+				
+					<a href="../../tour/overview/">Tour</a>
+				
+					<a href="../../docs/userguide/" class="selected">Docs</a>
+				
+					<a href="../../community/development/overview/">Community</a>
+				
+					<a href="../../contact/">Contact</a>
+				
+			</div>
+			<div id="all">
+				
+		
+		
+	
+	
+
+<div id="submenu">
+	
+		<a class="submenu-item" href="../../docs/userguide/">
+			<div class="submenu-item-background selected">
+				<div class="submenu-item-number">1</div>
+			</div>
+			<div class="submenu-item-label">User Guide</div>
+		</a>
+	
+		<a class="submenu-item" href="../../docs/about/">
+			<div class="submenu-item-background">
+				<div class="submenu-item-number">2</div>
+			</div>
+			<div class="submenu-item-label">About</div>
+		</a>
+	
+</div>
+<div id="content">
+	<div class="content-context">		
+		<div class="toc right">
+	<div id="toc-header">Contents</div>
+	<ol id="toc-body">	
+		<li><a href="../../docs/userguide/#analytic-scenario">Analytic Scenario</a></li>
+		<li><a href="../../docs/userguide/#logging-in">Logging In</a></li>
+		<li><a href="../../docs/userguide/#begin-investigation">Beginning an Investigation</a>
+			<ul>
+				<li><a href="../../docs/userguide/#browse-region">Browse by Region</a>
+				<li><a href="../../docs/userguide/#tip-search">Perform a Tip Search</a>
+			</ul>
+		</li>
+		<li><a href="../../docs/userguide/#examine-results">Examining Search Results</a></li>
+		<li><a href="../../docs/userguide/#examine-entities">Examining Entities</a>
+			<ul>
+				<li><a href="../../docs/userguide/#entity-resolution-graph">Entity Resolution Graph</a>
+				<li><a href="../../docs/userguide/#entity-details">Understanding Entity Details</a>
+				<li><a href="../../docs/userguide/#examining-ads">Understanding Entity Details</a>
+			</ul>
+		</li>
+		<li><a href="../../docs/userguide/#saving-exporting">Saving or Exporting Case Details</a>
+	</ol>
+</div>
+<p>
+<div class="uncharted-footer"></div>
+<p>
+<a href="http://uncharted.software/" class="copyright">&#169;2015 Uncharted Software Inc.</a>
+
+	</div>
+	<div class="content-body">
+		<h1>User Guide</h1>
+
+<p>This guide is designed to help analysts understand how to use TellFinder to detect the behavior of individuals and organizations engaged in human trafficking by analyzing publicly available Internet escort advertisements.</p>
+
+<div class="git">
+    <p>The following topics are covered in this guide:</p>
+
+    <ol>
+        <li>Overview</li>
+        <li><a href="getting-started/">Getting Started</a></li>
+        <li><a href="concepts/">Understanding TellFinder Concepts</a></li>
+        <li><a href="interface/">Navigating the Interface</a></li>
+    </ol>
+</div>
+
+<p>For information about building, installing and running the Influent source code, see the <a href="../../community/development/overview/">Development</a> page.</p>
+
+<h2><a name="analytic-scenario"></a> Analytic Scenario</h2>
+
+<p>Consider an analytic scenario in which a tip identifies an entity with the alias <em>cerise7</em>, who is allegedly involved in the trafficking of young girls in the <em>Los Angeles, CA</em> area. You can use TellFinder to locate entities who have used in Internet escort advertisements or who are otherwise associated with this alias.</p>
+
+<p>Please note that names and other identifying attributes used in this scenario have been anonymized. </p>
+
+<h2><a name="logging-in"></a> Logging In</h2>
+
+<p>TellFinder can be accessed using any modern Web browser (e.g., Chrome, Firefox, Internet Explorer or Safari).</p>
+
+<h6 class="procedure">To start a new session</h6>
+
+<ol>
+<li>Open your Web browser and navigate to the location of your TellFinder Web server (e.g., <code>http://localhost:8080/tellfinder/</code>).</li>
+<li>Enter the <strong>User Name</strong> and <strong>Password</strong> supplied to you by your administrator and click <strong>Submit</strong> to log in.</li>
+</ol>
+
+<h2><a name="begin-investigation"></a> Beginning an Investigation</h2>
+
+<p>There are two ways you could use TellFinder to begin the investigation of the <em>cerise7</em> tip:</p>
+
+<ol>
+<li><a href="#browse-region">Review a broad regional listing</a> of all posting activity in the Los Angeles area to look for relevant information.</li>
+<li><a href="#tip-search">Perform a tip search</a> against the TellFinder databases to return a list of all ad groups that match the tip.</li>
+</ol>
+
+<p>The following sections describe both starting points.</p>
+
+<h3><a name="browse-region"></a> Browse by Region</h3>
+
+<p>The TellFinder home page illustrates the scope of scraped advertisements on a geographic map. Radial blooms over each city or region indicate how much activity was detected there; larger blooms indicate greater activity.</p>
+
+<p><img class="screenshot" src="../../img/screenshots/home.png" alt="TellFinder Home Page" /></p>
+
+<h4>Panning and Zooming</h4>
+
+<p>The TellFinder map shares familiar controls with other modern Web-based map clients such as Google Maps. </p>
+
+<h6 class="procedure">To zoom in or out</h6>
+
+<p>Perform any of the following actions:</p>
+
+<ul>
+<li>To quickly zoom in, double click on the area you want to view.</li>
+<li>Click the <strong>Zoom In</strong> <img src="../../img/screenshots/zoom-in.png" alt="Zoom In"> or <strong>Zoom Out</strong> <img src="../../img/screenshots/zoom-out.png" alt="Zoom Out"> button in the upper left corner of the map.</li>
+<li>Hover your cursor over an area and use mouse scroll wheel to zoom in or out.</li>
+</ul>
+
+<h6 class="procedure">To pan</h6>
+
+<p>Click and drag any region of the map in the direction you want to view.</p>
+
+<h4>Investigating Regions</h4>
+
+<p>Each radial bloom on the map is an interactive control that enables you to access more information about the ads in that region. The blooms indicate how much activity occurred in the associated regions over the period specified in the timeline below the map.</p>
+
+<h6 class="procedure">To adjust the ad timeline</h6>
+
+<ol>
+<li>Click and drag either of the sliders above the the timeline where the years are displayed. The left slider specifies the start date while the right controls the end date.</li>
+<li>Notice that the radial blooms on the map are automatically scaled up or down. The map only represents ads that were posted in the period you select.</li>
+</ol>
+
+<p><img class="screenshot" src="../../img/screenshots/timeline.png" alt="Scraped Ads Timeline" /></p>
+
+<h6 class="procedure">To view the scope of ads scraped in Los Angeles</h6>
+
+<ol>
+<li>Hover your cursor over the group of radial blooms in Southern California. Because there is high advertising activity in this region, you may need to move around or zoom in until you locate Los Angeles.</li>
+<li>Notice that TellFinder displays a tooltip that lists the total number of ads scraped that match this region.</li>
+<li>Click on the Los Angeles bloom to reveal a menu of commands. Select <strong>Show Entity List</strong> to reveal the list of ad groups located in Los Angeles.</li>
+<li>Scroll down through the table of ad groups until you find the <code>cerise70510@example.com</code> entry.</li>
+</ol>
+
+<p><img class="screenshot" src="../../img/screenshots/los-angeles.png" alt="Investigate Los Angeles" /></p>
+
+<h3><a name="tip-search"></a> Perform a Tip Search</h3>
+
+<p>Instead of performing a broad region-based inspection of ads, you can quickly search the TellFinder databases for a tip.</p>
+
+<h6 class="procedure">To execute a tip search</h6>
+
+<ol>
+<li>Type <em>cerise7</em> in the <strong>Enter Tip</strong> field above the map on the Home page and press <strong>ENTER</strong>. Note that this field is also available on the list of resulting ad groups in case you need to alter your search parameters.</li>
+<li>TellFinder returns a table of ad groups that match your criteria.</li>
+</ol>
+
+<p><img class="screenshot" src="../../img/screenshots/tip-search.png" alt="Tip Search" /></p>
+
+<h2><a name="examine-results"></a> Examining Search Results</h2>
+
+<p>Whether you begin your investigation by browsing a specific region or by searching for a tip, the resulting list of ad groups is displayed in the same format.</p>
+
+<p>The Ad Groups screen lists all of the entities that match the search criteria. In addition the ad timeline, the Ad Groups page summarizes the distribution of locations, ethnicities, source websites and human trafficking keywords referenced in the matching posts.</p>
+
+<p><img class="screenshot" src="../../img/screenshots/search-results.png" alt="Ad Groups Search Results" /></p>
+
+<h6 class="procedure">To review a particular result</h6>
+
+<ol>
+<li>Find the <em>cerise7</em> entry in the table of ad groups. Note that the ad group is named <code>cerise71621@example.com</code>; TellFinder automatically found the attribute that is <em>like</em> the criteria you entered.</li>
+<li>Review each of the columns in the table. TellFinder indicates how many ads are in the group that belongs to the <em>cerise7</em> entity and when the latest post occurred.</li>
+<li>Mouse over each of the columns with colored bars in them to view the distribution of attributes found in the ad group. The <strong>Underage</strong> column, for example, indicates that <em>cerise7</em> has used the keywords <em>girl</em>, <em>baby</em> and <em>fresh</em>, which may indicate the involvement of minors.</li>
+</ol>
+
+<h2><a name="examine-entities"></a> Examining Entities</h2>
+
+<p>Once you have reviewed the summary of the <em>cerise7</em> ad group, you can drill down into the entity that the group represents to review:</p>
+
+<ul>
+<li>Other entities or organizations to which the group is connected</li>
+<li>Details of the ad keywords, movement indicators and attributes</li>
+<li>Full contents of individual ads in the group</li>
+</ul>
+
+<h3><a name="entity-resolution-graph"></a> Reviewing the Entity Resolution Graph</h3>
+
+<p>The Entity Resolution graph shows other entities or organizations to which the selected entity is connected. Entity connections are determined by shared attributes (websites, phone numbers and email addresses) that appear across multiple ad groups.</p>
+
+<p><img class="screenshot" src="../../img/screenshots/entity-resolution-concentric.png" alt="Entity Resolution - Concentric Layout" /></p>
+
+<p>The Entity Resolution graph supports both concentration and left-to-right layouts that highlight the distance of other entities and organizations to the selected entity.</p>
+
+<p><img class="screenshot" src="../../img/screenshots/entity-resolution-linear.png" alt="Entity Resolution - Linear Layout" /></p>
+
+<h6 class="procedure">To change the entity resolution graph layout</h6>
+
+<p>Click the <strong>Toggle Layout</strong> <img src="../../img/screenshots/toggle-layout.png" alt="Toggle Layout"> button above the Entity Resolution legend.</p>
+
+<h4>Changing the Focus of an Investigation</h4>
+
+<p>In this analytic scenario, <em>cerise7</em> is directly connected to one other entity, <em>Zhang Wei</em>, because both have posted ads that include the same phone number.</p>
+
+<p>Because all the other entities in the <em>cerise7</em> graph are connected to <em>Zhang Wei</em>, we will focus on this entity as its scope of activity is much deeper.</p>
+
+<h6 class="procedure">To change the entity on which you are focused</h6>
+
+<ol>
+<li>Click the entity node for <em>Zhang Wei</em> in the entity resolution graph.</li>
+<li>Notice that the Ads table and distribution summaries are refreshed to show the relevant information for <em>Zhang Wei</em>.</li>
+</ol>
+
+<h3><a name="entity-details"></a> Understanding Entity Details</h3>
+
+<p>The sidebar on the Entity Resolution page summarizes numerous keywords in the ads posted by the selected entity:</p>
+
+<ul>
+<li><strong>Summary</strong>: Lists the distribution of strong identifying attributes (phone numbers, email address and websites), indicates how many ads were posted by the entity, and indicates why it is connected to the other entities and organizations in its graph.</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/summary.png" alt="Entity Summary" /></p>
+
+<ul>
+<li><strong>Movement</strong>: Shows a timeline of postings against the locations they are listed. For <em>Zhang Wei</em>, we see simultaneous postings in California and China, followed weeks later by postings in Arkansas and later Missouri.</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/movement-zhang.png" alt="Entity Movement" /></p>
+
+<ul>
+<li><strong>Map</strong>: Subset of the map on the Home page scaled and focused to show only the ad posting locations and counts of the selected entity. Here we see <em>Zhang Wei</em> cross-country and international activities.</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/map.png" alt="Entity Map" /></p>
+
+<ul>
+<li><strong>Word Cloud</strong>: Lists the most common words from the ads posted by the selected entity, where size indicates frequency of use. Here we see the posts made by <em>Zhang Wei</em> most often include the entities name, the sites where the ads are posted and a location, Shanghai. Other words that appear less frequently include adult services keywords and other locations where the entity has advertised.</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/word-cloud-zhang.png" alt="Entity Word Cloud" /></p>
+
+<ul>
+<li><strong>Attributes</strong>: Expanded density strip plots that show the distribution of different identifying attributes and keywords repeated across all the ads.</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/attributes.png" alt="Entity Attributes" /></p>
+
+<ul>
+<li><strong>Images</strong>: Summarizes the number of images shared across the associated ads</li>
+</ul>
+
+<p><img class="screenshot" src="../../img/screenshots/images.png" alt="Entity Images" /></p>
+
+<h3><a name="examining-ads"></a> Examining Individual Ads</h3>
+
+<p>The Entity Resolution page also includes a table of all the ads posted by an entity or organization. </p>
+
+<p><img class="screenshot" src="../../img/screenshots/ad-table.png" alt="Entity Images" /></p>
+
+<p>For each entry, the following information is captured:</p>
+
+<ul>
+<li>Archived posting information: The time the ad was posted, the website that hosted it, the post title and contents, and the full URL.</li>
+<li>Extracted entity attributes and adult service keywords: Phone number, email address, hourly rate charged, ethnicity and associated images (which can be blurred for viewing in sensitive environments)</li>
+</ul>
+
+<h6 class="procedure">To view an archived version of a scraped ad</h6>
+
+<p>Click the Magnifying Glass icon to the left of the table entry and select <strong>Launch in Poprox</strong>.</p>
+
+<h6 class="procedure">To view the ad posting on the Internet</h6>
+
+<p>Click the Magnifying Glass icon to the left of the table entry and select <strong>Show URL</strong>. Note that because adult services advertisements are frequently removed from the Internet, older postings may no longer be available. </p>
+
+<h2><a name="saving-exporting"></a> Saving or Exporting Case Details</h2>
+
+<p>Once you find an entity or organization that you want to save for later investigation, you can build a TellFinder case that persists the entities information across sessions. Saved cases indicate the total number ads belonging to an entity and the most recent activity.</p>
+
+<p><img class="screenshot" src="../../img/screenshots/case-builder-zhang.png" alt="Case Builder" /></p>
+
+<p>Creating cases also allows you to export the details of the entities you have saved. All exports are saved as CSV files that can be easily included in reports or shared with individuals who don&#39;t have access to TellFinder.</p>
+
+<h6 class="procedure">To build a new case in TellFinder</h6>
+
+<ol>
+<li>In the Entity Resolution graph, click the node of the entity or organization you want to save and drag it into the Case Builder module in the sidebar.</li>
+<li>In the New Case dialog, enter a name for your case and click <strong>OK</strong>.</li>
+<li>To add additional entities, simply drag them into the Case Builder module.</li>
+</ol>
+
+<h6 class="procedure">To export entity information to a CSV file</h6>
+
+<ol>
+<li>Click the <strong>Export</strong> button in the Case Builder module.</li>
+<li>Select one of the following export types:
+
+<ul>
+<li><strong>Cluster CSV</strong>: Summarizes the entities in your case and the number of ads they have posted</li>
+<li><strong>Ads CSV</strong>: Lists the complete details of all the ads posted by the entities in your case</li>
+</ul></li>
+</ol>
+
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>
